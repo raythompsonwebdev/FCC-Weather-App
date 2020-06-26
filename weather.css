@@ -1,0 +1,94 @@
+
+@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+
+body{
+
+    max-width:100%;
+    height:auto;
+    font-family: 'PT Sans', arial , sans-serif;
+
+}
+
+
+
+#data{
+
+    display:block;
+    width:70%;
+    margin:auto;
+    position:relative;
+    top:15vh;
+    left:0vw;
+    border:1px solid #000;
+    background-color:rgb(179, 179, 221);
+    padding:1em;
+    border-radius:10px;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+}
+
+h1,
+h2{
+    display:block;
+    line-height:50px;
+    text-align:center;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    width: 100%;
+    margin:0;
+}
+
+
+.weatherbox{
+    display:inline-block;
+    width:50%;
+    height:auto;
+    min-height:100px;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    background-color:rgb(149, 143, 184);
+
+}
+
+span:first-of-type{
+    text-align:center;
+}
+.weatherbox p{
+    font-size:1em;
+    color:#000;
+    text-align:center;
+    line-height:1.8em;
+    width:100%;
+    display:inline-block;
+    margin:2em auto;
+}
+
+.weatherbox img{
+    display:block;
+    margin:1.5em auto;
+}
+
+button#tempbtn{
+
+    display:block;
+    width:40%;
+    padding:1em;
+    outline:none;
+    border:none;
+    border-radius:10px;
+    background-color:rgb(112, 105, 150);
+    margin:1em auto;
+    color:#fff;
+}
+
+button#tempbtn:hover{
+    cursor:pointer;
+    background-color:rgb(78, 74, 102);
+}
+
