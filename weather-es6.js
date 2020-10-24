@@ -9,8 +9,9 @@
       lat = position.coords.latitude;
       lon = position.coords.longitude;             
 
-    var url = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon}`
-  
+      //var url = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon}`
+
+      var url = `https://fcc-w-app.herokuapp.com/api/data/2.5/weather?lat=${lat}&lon=${lon}`    
         
       var maintitle = document.querySelector("#data #header_title");      
       var subtitle = document.querySelector("#sub_title");
