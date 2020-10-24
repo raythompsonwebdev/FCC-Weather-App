@@ -18,40 +18,22 @@
   <script type="text/babel">
 
   //show image according to weather
-    let Ftemp = null;
-    
+            
     const WeatherBoxes = props => {
 
         console.log(props)
-        
-        let Ftemp = (props.Ktemp)*(9/5) + 32;
-
-        const tempVisibility = (e) => {
-            
-            var tempChange;
-
-            e.preventDefault();
-
-            if (!tempChange){
-                
-                console.log(Ktemp)
-            }else { 
-                console.log(Ftemp)
-            }
-            
-        }
-               
-            return (
-                <>
-                    <h1 id="header_title">Weather App</h1>
-                    <h2>{props.city}</h2>
-                    <span className="weatherbox" id="image"><img src={props.weathericon} /></span>
-                    <span className="weatherbox" id="speed"><p>{props.weather}</p></span>
-                    <span className="weatherbox" id="description"><p>{props.weatherdesc}</p></span>
-                    <span className="weatherbox" id="temperature"><p>{`Temperature: ${Math.floor(props.Ktemp)}`}</p></span>
-                    <button onClick={tempVisibility} id="tempbtn">Convert &#8451; to &#8457;</button>
-                </>
-            ); 
+                       
+        return (
+            <>
+                <h1 id="header_title">Weather App</h1>
+                <h2>{props.city}</h2>
+                <span className="weatherbox" id="image"><img src={props.weathericon} /></span>
+                <span className="weatherbox" id="speed"><p>{props.weather}</p></span>
+                <span className="weatherbox" id="description"><p>{props.weatherdesc}</p></span>
+                <span className="weatherbox" id="temperature"><p>{`Temperature: ${Math.floor(props.displayTemp)} ${props.scale}`}</p></span>
+                <button onClick={props.tempVisibility} id="tempbtn">Convert &#8451; to &#8457;</button>
+            </>
+        ); 
     }
     
         
@@ -64,10 +46,14 @@
                 weather : " ",
                 weatherdesc : " ",
                 weathericon : " ",
-                wind : " ",         
-                Ktemp : " ",
+                wind : " ",
+                temp: null, 
+                displayTemp: null,
+                scale: 'C',
                 
             }
+            this.tempVisibility = this.tempVisibility.bind(this);
+            
         }                  
 
         componentDidMount() {
@@ -80,14 +66,6 @@
 
                     var lat = position.coords.latitude;
                     var lon = position.coords.longitude; 
-
-                    // getWeather = async() => {
-                    //     const url = await fetch(`https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon}`);
-
-                    //     const response = await url.json();
-                    //     this.setState({data : response.data})
-                    //     console.log(this.state.data)
-                    // }
 
                     var url = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon}`
 
@@ -105,11 +83,12 @@
 
                         currentComponent.setState({
                             city : result.name,
+                            temp: result.main.temp,
                             weather : result.weather[0].main,
                             weatherdesc : result.weather[0].description,
                             weathericon : result.weather[0].icon,
                             wind : result.wind.speed,         
-                            Ktemp : result.main.temp,
+                            displayTemp : result.main.temp,
                         });
 
                                           
@@ -126,12 +105,34 @@
             }
 
         }
+              
+        
+        tempVisibility (e) {
 
+            e.preventDefault();
+            //console.log(temp)
+            let far = (this.state.temp * 9/5) + 32;
+      
+            if (this.state.scale === 'C') {
+
+                console.log("yes" + this.state.temp)
+                this.setState({
+                    displayTemp: far,
+                    scale: 'F',
+                });
+            } else {
+                console.log("no")
+                this.setState({ displayTemp: this.state.temp, scale: 'C' });
+            }
+            
+        }
+       
                        
         render(){
 
-        const { data } = this.state;
-       
+            const { temp, scale } = this.state;
+            const scaleDisplay = scale === 'C' ? <p>&#8451;</p> : <p>&#8457;</p>;
+        
             return (
                 <div id="container">                     
                     <WeatherBoxes 
@@ -140,8 +141,10 @@
                         weatherdesc = {this.state.weatherdesc}
                         weathericon = {this.state.weathericon}
                         wind = {this.state.wind}         
-                        Ktemp = {this.state.Ktemp}
-
+                        displayTemp = {this.state.displayTemp}
+                        temp = {this.state.temp}
+                        scale = {this.state.scale}
+                        tempVisibility ={this.tempVisibility}
                     />                     
                 </div>
 
