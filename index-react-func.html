@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="weather.css" />
+    <script src="https://unpkg.com/react@16.8.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.8.2/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+      const WeatherBoxes = (props) => {
+        return (
+          <>
+            <h1 id="header_title">Weather App</h1>
+            <h2>{props.city}</h2>
+            <span className="weatherbox" id="image">
+              <img src={props.weathericon} />
+            </span>
+            <span className="weatherbox" id="speed">
+              <p>{props.weather}</p>
+            </span>
+            <span className="weatherbox" id="description">
+              <p>{props.weatherdesc}</p>
+            </span>
+            <span className="weatherbox" id="temperature">
+              <p>{`Temperature: ${Math.floor(props.displayTemp)} ${
+                props.scale
+              }`}</p>
+            </span>
+            <button onClick={props.tempVisibility} id="tempbtn">
+              Convert &#8451; to &#8457;
+            </button>
+          </>
+        );
+      };
+
+      const WeatherApp = () => {
+        const [city, setCity] = React.useState(" ");
+        const [weather, setWeather] = React.useState(" ");
+        const [weatherdesc, setWeatherdesc] = React.useState(" ");
+        const [weathericon, setWeathericon] = React.useState(" ");
+        const [wind, setWind] = React.useState(" ");
+        const [temp, setTemp] = React.useState(" ");
+        const [displayTemp, setDisplayTemp] = React.useState(" ");
+        const [scale, setScale] = React.useState("C");
+
+        React.useEffect(() => {
+          
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+              var lat = position.coords.latitude;
+              var lon = position.coords.longitude;
+
+              var url = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon}`;
+
+              //var url = `https://fcc-w-app.herokuapp.com/api/data/2.5/weather?lat=${lat}&lon=${lon}`
+
+              fetch(url)
+                .then((response) => {
+                  return response.json();
+                })
+                .then((result) => {
+                  setCity(result.name);
+                  setTemp(result.main.temp);
+                  setWeather(result.weather[0].main);
+                  setWeatherdesc(result.weather[0].description);
+                  setWeathericon(result.weather[0].icon);
+                  setWind(result.wind.speed);
+                  setDisplayTemp(result.main.temp);
+                })
+                .catch((error) => {
+                  console.log(error);
+                });
+            });
+          } else {
+            alert("Geolocation is not supported by this browser.");
+          }
+        });
+
+        const tempVisibility = (e) => {
+          e.preventDefault();
+
+          let far = (temp * 9) / 5 + 32;
+
+          if (scale === "C") {
+            setScale("F");
+            setDisplayTemp(far);
+          } else {
+            setScale("C");
+            setDisplayTemp(temp);
+          }
+        };
+
+        let weatherBg = weather;
+
+        //show image according to weather
+        switch (weatherBg) {
+          case (weatherBg = "Clouds"):
+            document.querySelector("body").style.backgroundImage =
+              'url("https://drive.google.com/uc?id=1h8B7q-tPX3iyUCb00Nnh4uAnrbK3gTOP")';
+            break;
+          case (weatherBg = "Rain"):
+            document.querySelector("body").style.backgroundImage =
+              'url("https://drive.google.com/uc?id=1Qv4KK1B-xh2NQF-oTydkmlbXXZmAJGtl")';
+            break;
+          case (weatherBg = "Snow"):
+            document.querySelector("body").style.backgroundImage =
+              'url("https://drive.google.com/uc?id=1IpR6qO5bYVIADYP0lBCc76AH4NqeTsiP")';
+            break;
+          case (weatherBg = "Wind"):
+            document.querySelector("body").style.backgroundImage =
+              'url("https://drive.google.com/uc?id=1IpR6qO5bYVIADYP0lBCc76AH4NqeTsiP")';
+            break;
+          case (weatherBg = "Drizzle"):
+            document.querySelector("body").style.backgroundImage =
+              'url("https://drive.google.com/uc?id=1Qv4KK1B-xh2NQF-oTydkmlbXXZmAJGtl")';
+            break;
+
+          case (weatherBg = "Clear"):
+            document.querySelector("body").style.backgroundImage =
+              'url("https://drive.google.com/file/d/1qGb_nZpSSfVHBnQvnNA0S_72ifQZH-vs")';
+        }
+
+        const scaleDisplay = scale === "C" ? <p>&#8451;</p> : <p>&#8457;</p>;
+
+        return (
+          <div id="container">
+            <WeatherBoxes
+              city={city}
+              weather={weather}
+              weatherdesc={weatherdesc}
+              weathericon={weathericon}
+              wind={wind}
+              displayTemp={displayTemp}
+              temp={temp}
+              scale={scale}
+              tempVisibility={tempVisibility}
+            />
+          </div>
+        );
+      };
+
+      ReactDOM.render(<WeatherApp />, document.getElementById("root"));
+    </script>
+  </body>
+</html>

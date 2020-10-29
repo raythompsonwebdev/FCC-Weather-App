@@ -14,45 +14,62 @@ body{
 #container{
 
     display:block;
-    width:70%;
+    width:50%;
     margin:auto;
     position:relative;
     top:15vh;
     left:0vw;
-    border:1px solid #000;
-    background-color:rgb(179, 179, 221);
+    background-color:rgb(69, 69, 71);
     padding:1em;
     border-radius:10px;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    -webkit-flex-flow: row wrap;
-    -ms-flex-flow: row wrap;
-    flex-flow: row wrap;
+    -webkit-flex-flow: column wrap;
+    -ms-flex-flow: column wrap;
+    flex-flow: column wrap;
 }
 
-h1,
-h2{
+
+h1{
     display:block;
     line-height:50px;
     text-align:center;
     -webkit-align-self: center;
     -ms-flex-item-align: center;
     align-self: center;
+    background-color:rgb(40, 40, 41);
     width: 100%;
     margin:0;
+    color:#fff;
+    text-shadow:1px 1px #000;
+}
+
+
+h2{
+    display:block;
+    line-height:70px;
+    text-align:center;
+    -webkit-align-self: center;
+    -ms-flex-item-align: center;
+    align-self: center;
+    width: 100%;
+    margin:0;
+    color:#fff;
+    text-shadow:1px 1px #000;
+    font-size:2.5em;
 }
 
 
 .weatherbox{
     display:inline-block;
-    width:50%;
+    width:100%;
     height:auto;
-    min-height:100px;
-    -webkit-flex: 0 0 auto;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-    background-color:rgb(149, 143, 184);
+    min-height:70px;
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+    background-color:rgb(40, 40, 41);
 
 }
 
@@ -60,13 +77,13 @@ span:first-of-type{
     text-align:center;
 }
 .weatherbox p{
-    font-size:1em;
-    color:#000;
-    text-align:center;
-    line-height:1.8em;
+    font-size:1.5em;
+    color:#fff;
+    text-align:center;    
     width:100%;
-    display:inline-block;
-    margin:2em auto;
+    text-transform: uppercase;
+    text-shadow:1px 1px #000;
+    letter-spacing:0.05em;
 }
 
 .weatherbox img{
@@ -77,12 +94,13 @@ span:first-of-type{
 button#tempbtn{
 
     display:block;
-    width:40%;
-    padding:1em;
+    width:100%;
+    line-height:50px;
+    height:auto;
+    font-size:1.5em;
     outline:none;
     border:none;
-    border-radius:10px;
-    background-color:rgb(112, 105, 150);
+    background-color:rgb(40, 40, 41);
     margin:1em auto;
     color:#fff;
 }
