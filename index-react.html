@@ -99,10 +99,7 @@
               var url = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon}`;
 
               //var url = `https://fcc-w-app.herokuapp.com/api/data/2.5/weather?lat=${lat}&lon=${lon}`
-              //https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=YOUR_API_KEY
-              //c79721acd10fac04a4a192afe21b58ca - Weather
-              //api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={API key}
-
+              
               fetch(url)
                 .then((response) => {
                   return response.json();
