@@ -14,6 +14,29 @@
     <div id="root"></div>
 
     <script type="text/babel">
+
+    // const SearchForm = (props) => {
+
+    //   const handleChange = e => {
+
+    //     props.updateFormState("city" , e.target.value);
+        
+    //   }
+
+    //   // const handleSubmit = e => {
+    //   //   e.preventDefault();
+    //   // }
+
+    //   return(
+    //     <form >
+    //       <label for="">
+    //         <input type="text" value={props.city} onChange={handleChange}/>
+    //       </label>
+    //     </form>
+
+    //   )
+
+    // }
     
       const WeatherBoxes = (props) => {
         return (
@@ -56,7 +79,13 @@
             temp: null,
             displayTemp: null,
             scale: "C",
-          };          
+          };
+          this.updateFormState = this.updateFormState.bind(this);
+                   
+        }
+
+        updateFormState(name,val) {
+          this.setstate({[name]:val})
         }
 
         componentDidMount() {
@@ -70,6 +99,9 @@
               var url = `https://fcc-weather-api.glitch.me/api/current?lat=${lat}&lon=${lon}`;
 
               //var url = `https://fcc-w-app.herokuapp.com/api/data/2.5/weather?lat=${lat}&lon=${lon}`
+              //https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=YOUR_API_KEY
+              //c79721acd10fac04a4a192afe21b58ca - Weather
+              //api.openweathermap.org/data/2.5/weather?q={city name},{state code},{country code}&appid={API key}
 
               fetch(url)
                 .then((response) => {
@@ -159,7 +191,9 @@
                 temp={this.state.temp}
                 scale={this.state.scale}
                 tempVisibility={this.tempVisibility}
+                
               />
+              
             </div>
           );
         }
