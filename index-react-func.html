@@ -17,7 +17,7 @@
       const WeatherBoxes = (props) => {
         return (
           <>
-            <h1 id="header_title">Weather App</h1>
+            <h1 id="header_title">React Weather App</h1>
             <h2>Current weather forecast in :{props.city}</h2>
             <span className="weatherbox" id="image">
               <img src={props.weathericon} />
@@ -101,30 +101,34 @@
 
         //show image according to weather
         switch (weatherBg) {
+          case (weatherBg = "Haze"):
+              document.querySelector("body").style.backgroundImage =
+                'url("https://www.dropbox.com/s/ym0erjyg4n29385/beautiful-clouds-cloudy-209831.jpg?raw=true")';
+            break;
           case (weatherBg = "Clouds"):
             document.querySelector("body").style.backgroundImage =
-              'url("https://drive.google.com/uc?id=1h8B7q-tPX3iyUCb00Nnh4uAnrbK3gTOP")';
+              'url("https://www.dropbox.com/s/ym0erjyg4n29385/beautiful-clouds-cloudy-209831.jpg?raw=true")';
             break;
           case (weatherBg = "Rain"):
             document.querySelector("body").style.backgroundImage =
-              'url("https://drive.google.com/uc?id=1Qv4KK1B-xh2NQF-oTydkmlbXXZmAJGtl")';
+              'url("https://www.dropbox.com/s/7rht3udo5v49kb7/black-and-white-clear-cool-459451.jpg?raw=true")';
             break;
           case (weatherBg = "Snow"):
             document.querySelector("body").style.backgroundImage =
-              'url("https://drive.google.com/uc?id=1IpR6qO5bYVIADYP0lBCc76AH4NqeTsiP")';
+              'url("https://www.dropbox.com/s/eoudzwgx4ot82iu/winter-3089888_1280.jpg?raw=true")';
             break;
           case (weatherBg = "Wind"):
             document.querySelector("body").style.backgroundImage =
-              'url("https://drive.google.com/uc?id=1IpR6qO5bYVIADYP0lBCc76AH4NqeTsiP")';
+              'url("https://www.dropbox.com/s/o7m02oxdywzslds/windy.jpg?raw=true")';
             break;
           case (weatherBg = "Drizzle"):
             document.querySelector("body").style.backgroundImage =
-              'url("https://drive.google.com/uc?id=1Qv4KK1B-xh2NQF-oTydkmlbXXZmAJGtl")';
+              'url("https://www.dropbox.com/s/qbf23zpi0h3ol1a/drizzle.jpg?raw=true")';
             break;
 
           case (weatherBg = "Clear"):
             document.querySelector("body").style.backgroundImage =
-              'url("https://drive.google.com/file/d/1qGb_nZpSSfVHBnQvnNA0S_72ifQZH-vs")';
+              'url("https://www.dropbox.com/s/srprp0vh69p55mv/clearday.jpg?raw=true")';
         }
 
         const scaleDisplay = scale === "C" ? <p>&#8451;</p> : <p>&#8457;</p>;
