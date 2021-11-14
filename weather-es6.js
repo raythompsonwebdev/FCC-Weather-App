@@ -51,7 +51,7 @@
           temperature.innerHTML = `<p>Temperature: ${Math.floor(Ktemp)}&#8451; </p>`;
 
           let Ftemp = (Ktemp)*(9/5) + 32;
-          const tempButton = document.querySelector("div#container #tempbtn");
+          const tempButton = document.querySelector("section#container #tempbtn");
           let tempChange;
 
           tempButton.addEventListener('click', function(e){
@@ -115,4 +115,5 @@
     alert("Geolocation is not supported by this browser.");
   
   }
+  
 })();

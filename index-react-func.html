@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Weather App</title>
+    <title>React Weather App</title>
     <link rel="stylesheet" href="weather.css" />
     <script src="https://unpkg.com/react@16.8.2/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.8.2/umd/react-dom.development.js"></script>
@@ -18,7 +18,7 @@
         return (
           <>
             <h1 id="header_title">Weather App</h1>
-            <h2>{props.city}</h2>
+            <h2>Current weather forecast in :{props.city}</h2>
             <span className="weatherbox" id="image">
               <img src={props.weathericon} />
             </span>
@@ -130,7 +130,7 @@
         const scaleDisplay = scale === "C" ? <p>&#8451;</p> : <p>&#8457;</p>;
 
         return (
-          <div id="container">
+          <section id="container">
             <WeatherBoxes
               city={city}
               weather={weather}
@@ -142,7 +142,7 @@
               scale={scale}
               tempVisibility={tempVisibility}
             />
-          </div>
+          </section>
         );
       };
 

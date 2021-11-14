@@ -2,8 +2,7 @@
 $(document).ready(function(){
 
   var lat;
-  var lon;
-  
+  var lon;  
 
   if (navigator.geolocation) {
 
@@ -12,8 +11,7 @@ $(document).ready(function(){
       lat = position.coords.latitude;
       lon = position.coords.longitude;
 
-      console.log(lat,lon);
-        
+      console.log(lat,lon);  
 
       var $title = $("div#data h1#title");
       var $subtitle = $("div#data h2#subtitle");
@@ -22,8 +20,7 @@ $(document).ready(function(){
       var $speed = $("div#data span#speed");
       var $temperature = $("div#data span#temperature");
       
-      var Ktemp;
-      
+      var Ktemp;     
             
       $.ajax({
 
@@ -42,12 +39,9 @@ $(document).ready(function(){
             var image = data.weather[0].icon;
             var wind = data.wind.speed;
             var city = data.name;
-            //var country = data.sys.country;
 
             Ktemp = data.main.temp;
-
-            //console.log(Ktemp);
-                                            
+                                               
             $title.html('Current weather forecast in '+city+'.');
             $subtitle.html(' '+weather+'.');
             $image.html('<img src="'+ image +'" title=""/>');
@@ -75,7 +69,7 @@ $(document).ready(function(){
 
             }
                   
-            });//end of tempbt
+            });
 
 
             //show image according to weather
@@ -110,8 +104,6 @@ $(document).ready(function(){
       
               $("div#data span#speed").html('<p>Wind Speed: '+data.erro+'</p>');
               $("div#data span#temperature").html('<p>Temperature: '+data.error+' &#8451;</p>');
-
-              
 
           }
                   
