@@ -1,5 +1,6 @@
 node_modules/
 APItext.txt
 ajaxproxy/*
-images/
+
 screencapture-openweathermap-org-current-2020-10-30-01_52_45.pdf
+assets/weather.js

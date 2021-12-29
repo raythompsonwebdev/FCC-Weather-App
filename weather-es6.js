@@ -74,26 +74,26 @@
 
             case weather = "Clouds":
 
-            document.querySelector('body').style.backgroundImage = 'url("https://drive.google.com/uc?id=1h8B7q-tPX3iyUCb00Nnh4uAnrbK3gTOP")';
+            document.querySelector('body').style.backgroundImage = 'url("images/cloudy.jpg")';
               break;
               case weather = "Rain":
 
-            document.querySelector('body').style.backgroundImage = 'url("https://drive.google.com/uc?id=1Qv4KK1B-xh2NQF-oTydkmlbXXZmAJGtl")';
+            document.querySelector('body').style.backgroundImage = 'url("images/rain.jpg")';
               break;
               case weather = "Snow":
 
-            document.querySelector('body').style.backgroundImage = 'url("https://drive.google.com/uc?id=1IpR6qO5bYVIADYP0lBCc76AH4NqeTsiP")';
+            document.querySelector('body').style.backgroundImage = 'url("images/snow.jpg")';
               break;
               case weather = "Wind":
 
-            document.querySelector('body').style.backgroundImage = 'url("https://drive.google.com/uc?id=1IpR6qO5bYVIADYP0lBCc76AH4NqeTsiP")';
+            document.querySelector('body').style.backgroundImage = 'url("images/wind.jpg")';
               break;
               case weather = "Drizzle":
 
-            document.querySelector('body').style.backgroundImage = 'url("https://drive.google.com/uc?id=1Qv4KK1B-xh2NQF-oTydkmlbXXZmAJGtl")';
+            document.querySelector('body').style.backgroundImage = 'url("images/drizzle.jpg")';
               break;
               case weather = "Clear":
-            document.querySelector('body').style.backgroundImage = 'url("https://drive.google.com/file/d/1qGb_nZpSSfVHBnQvnNA0S_72ifQZH-vs")';
+            document.querySelector('body').style.backgroundImage = 'url("images/clear.jpg")';
 
           }
 
